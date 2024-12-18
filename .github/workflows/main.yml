@@ -19,9 +19,11 @@ jobs:
           node-version: '22.12.0'  # Use your required Node.js version
 
       - name: Install dependencies
+        working-directory: ./frontend  # Ensure the path is correct
         run: npm install  # Or use other commands to install dependencies
 
       - name: Build the project
+        working-directory: ./frontend  # Ensure the path is correct
         run: npm run build  # Replace with your build command
 
       - name: Deploy to S3
@@ -29,10 +31,9 @@ jobs:
         with:
           aws_access_key_id: AKIA4ZPZUZ4AXGAGDYVB
           aws_secret_access_key: 9S5Ra6XRkjlC8U3eYaEMrAe7SZuQB0sQt6hyciDt
-
           aws_region: eu-north-1
           bucket: ${{ secrets.myflivointerface }}
-          source_dir: './build'  # Path to your build output
+          source_dir: './frontend/build'  # Path to your build output
           dest_dir: '/'  # Path in the S3 bucket where files will be uploaded
         env:
           AWS_ACCESS_KEY_ID: AKIA4ZPZUZ4AXGAGDYVB
