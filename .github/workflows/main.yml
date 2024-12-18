@@ -13,14 +13,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Node.js (if using Node.js for build)
+      - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version: '22.12.0'  # Use your required Node.js version
 
       - name: Install dependencies
         working-directory: ./frontend  # Ensure the path is correct
-        run: npm install  # Or use other commands to install dependencies
+        run: npm install
 
       - name: Build the project
         working-directory: ./frontend  # Ensure the path is correct
@@ -29,11 +29,11 @@ jobs:
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@v0.5.0  # GitHub Action to sync with S3
         with:
-          bucket: ${{ secrets.myflivointerface }}  # S3 bucket name stored in secrets
-          source_dir: './frontend/build'  # Path to your build output
-          dest_dir: '/'  # Path in the S3 bucket where files will be uploaded
-          region: 'eu-north-1'  # Specify the region
+          entryPoint: /bin/bash
+          args: |
+            aws s3 sync ./frontend/build s3://${{ secrets.AWS_S3_BUCKET }} --delete --region ${{ secrets.AWS_REGION }}
         env:
-          AWS_ACCESS_KEY_ID: AKIA4ZPZUZ4AXGAGDYVB  # Use GitHub secrets for AWS access key
-          AWS_SECRET_ACCESS_KEY: 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  # Use GitHub secrets for AWS secret access key
-          AWS_REGION: 'eu-north-1'  # Include region in environment variables
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}  # Use GitHub secrets for AWS access key
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}  # Use GitHub secrets for AWS secret access key
+          AWS_REGION: 'eu-north-1'  # Set the AWS region
+          AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}  # S3 bucket name stored in secrets
