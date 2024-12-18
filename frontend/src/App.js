@@ -75,7 +75,7 @@ function App() {
         </div>
         <nav>
           <ul>
-            <li onClick={() => handleModeChange("Modes")}>Modes</li>
+            <li onClick={() => handleModeChange("Modes")}>Mode</li>
             <li onClick={() => handleModeChange("General mode")}>
               General mode
             </li>
