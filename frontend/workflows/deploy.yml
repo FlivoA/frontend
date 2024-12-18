@@ -1,0 +1,40 @@
+name: Build and Deploy to S3
+
+on:
+  push:
+    branches:
+      - main  # Trigger the action when code is pushed to the main branch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js (if using Node.js for build)
+        uses: actions/setup-node@v2
+        with:
+          node-version: '22.12.0'  # Use your required Node.js version
+
+      - name: Install dependencies
+        run: npm install  # Or use other commands to install dependencies
+
+      - name: Build the project
+        run: npm run build  # Replace with your build command
+
+      - name: Deploy to S3
+        uses: jakejarvis/s3-sync-action@v0.5.0  # GitHub Action to sync with S3
+        with:
+          aws_access_key_id: AKIA4ZPZUZ4AXGAGDYVB
+          aws_secret_access_key: 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
+
+          aws_region: eu-north-1
+          bucket: ${{ secrets.myflivointerface }}
+          source_dir: './build'  # Path to your build output
+          dest_dir: '/'  # Path in the S3 bucket where files will be uploaded
+        env:
+          AWS_ACCESS_KEY_ID: AKIA4ZPZUZ4AXGAGDYVB
+          AWS_SECRET_ACCESS_KEY: 9S5Ra6XRkjlC8U3eYaEMrAe7SZuQB0sQt6hyciDt
+
