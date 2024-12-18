@@ -34,6 +34,6 @@ jobs:
           dest_dir: '/'  # Path in the S3 bucket where files will be uploaded
           region: 'eu-north-1'  # Specify the region
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}  # Use GitHub secrets for AWS access key
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}  # Use GitHub secrets for AWS secret access key
+          AWS_ACCESS_KEY_ID: AKIA4ZPZUZ4AXGAGDYVB  # Use GitHub secrets for AWS access key
+          AWS_SECRET_ACCESS_KEY: 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  # Use GitHub secrets for AWS secret access key
           AWS_REGION: 'eu-north-1'  # Include region in environment variables
