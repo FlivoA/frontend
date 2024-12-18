@@ -3,7 +3,7 @@ import "./App.css";
 import imjjLogo from "./assets/imjj.png";
 
 function App() {
-  const [mode, setMode] = useState("General mode");
+  const [ setMode] = useState("General mode");
   const [question, setQuestion] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
   const [loading, setLoading] = useState(false);
