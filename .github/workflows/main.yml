@@ -29,11 +29,11 @@ jobs:
       - name: Deploy to S3
         uses: jakejarvis/s3-sync-action@v0.5.0  # GitHub Action to sync with S3
         with:
-          entryPoint: /bin/bash
+          entryPoint: /bin/sh  # Change entry point to /bin/sh instead of /bin/bash
           args: |
             aws s3 sync ./frontend/build s3://${{ secrets.AWS_S3_BUCKET }} --delete --region ${{ secrets.AWS_REGION }}
         env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}  # Use GitHub secrets for AWS access key
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}  # Use GitHub secrets for AWS secret access key
-          AWS_REGION: 'eu-north-1'  # Set the AWS region
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}  # AWS access key
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}  # AWS secret access key
+          AWS_REGION: ${{ secrets.AWS_REGION }}  # AWS region
           AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}  # S3 bucket name stored in secrets
