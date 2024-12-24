@@ -18,6 +18,9 @@ jobs:
       with:
         node-version: '18'
 
+    - name: Navigate to project folder
+      run: cd frontend # Replace with the folder containing your package.json
+
     - name: Install dependencies
       run: npm install
 
