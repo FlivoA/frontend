@@ -3,7 +3,7 @@ name: Deploy to Firebase Hosting
 on:
   push:
     branches:
-      - main # Adjust to your default branch name
+      - main  # Adjust to your default branch name
 
 jobs:
   deploy:
@@ -30,7 +30,7 @@ jobs:
       run: npm run build
 
     - name: Deploy to Firebase
-      working-directory: frontend/src # Adjust to the folder containing firebase.json
+      working-directory: frontend # Ensure this points to the correct folder containing firebase.json
       env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}  # Use the Firebase token stored in GitHub Secrets
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}  # Use Firebase token from GitHub Secrets
       run: firebase deploy --only hosting --project flivoai-d1448
