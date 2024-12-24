@@ -1,0 +1,203 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .app {
+    display: flex;
+    height: 100vh;
+    background-color: #f0efef;
+    margin: 0; 
+  }
+  
+  /* Sidebar Styles */
+  .sidebar {
+    background-color: #090909;
+    color: white;
+    width: 250px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    
+  }
+  
+  .logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .logo {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid white;
+  }
+  
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .sidebar nav ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 40px;
+  }
+  
+  .sidebar nav ul li {
+    margin: 10px 0;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.2s ease;
+  }
+  
+  .sidebar nav ul li:hover {
+    background-color: #333333;
+  }
+  
+  .footer {
+    margin-top: auto;
+  }
+  
+  .switch-button {
+    display: block;
+    margin-top: 20px;
+    padding: 10px;
+    width: 100%;
+    background-color: #444444;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .switch-button:hover {
+    background-color: #555555;
+  }
+  
+  /* Main Content Styles */
+  .content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    padding: 40px;
+    align-items: center;
+    text-align: center;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+  /* Sidebar width + 40px offset for centering */
+    
+  }
+  
+  /* Chat History Styles */
+  .chat-history {
+    max-height: 400px;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .chat-entry {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px; /* Adjust gap between question and answer */
+  }
+  
+  .question, .response {
+    padding: 15px;
+    border-radius: 8px;
+    max-width: 70%;
+    word-wrap: break-word;
+  }
+  
+  .question {
+    background-color: #f0eeee;
+    border: 1px solid #ddd;
+  }
+  
+  .response {
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+  }
+  
+  /* Centering Ask Flivo text */
+  .content h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: bold;
+  }
+  
+  
+  
+  .chatbox {
+    position:fixed;
+    bottom: 0;
+    left: 290px; /* Sidebar width */
+    right: 10px;
+    background-color: rgb(9, 9, 9);
+    box-shadow: 0px -4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    z-index: 10;
+  }
+  
+  .chatbox input {
+    flex: 1;
+    padding: 10px;
+    margin-right: 10px;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .send-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+  
+  .send-button:hover {
+    background-color: #0056b3;
+  }
+  .send-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+  
+  .send-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .send-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
