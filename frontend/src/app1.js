@@ -71,7 +71,7 @@ function App() {
       <aside className="sidebar">
         <div className="logo-container">
           <img src={imjjLogo} alt="IMJJ Logo" className="logo" />
-          <p className="logo-text">ASK</p>
+          <p className="logo-text">ask</p>
         </div>
         <nav>
           <ul>
