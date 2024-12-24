@@ -1,41 +1,22 @@
-name: Build and Deploy to S3
-
 on:
   push:
     branches:
-      - main # Trigger the action when code is pushed to the main branch
-
+      - main  # Replace with the branch you want to deploy from
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    
+  build_and_deploy:
     steps:
-      - name: Checkout code
+      - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '22.12.0'  # Use your required Node.js version
-
       - name: Install dependencies
-        working-directory: ./frontend  # Ensure the path is correct
-        run: npm install
+        run: npm install  # Adjust if you're using yarn or other tools
 
-      - name: Build the project
-        working-directory: ./frontend  # Ensure the path is correct
-        run: npm run build  # Replace with your build command
+      - name: Build project
+        run: npm run build  # Adjust based on your project setup
 
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v2
+      - name: Deploy to Firebase
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}  # Ensure the region is properly set in your secrets
-
-      - name: Deploy to S3
-        run: aws s3 sync ./frontend/build s3://${{ secrets.AWS_S3_BUCKET }} --delete --region ${{ secrets.AWS_REGION }}
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: 'eu-north-1'  # Pass the AWS region as an environment variable
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT }}"
+          channelId: live
