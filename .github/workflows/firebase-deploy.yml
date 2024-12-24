@@ -3,7 +3,7 @@ name: Deploy to Firebase Hosting
 on:
   push:
     branches:
-      - main # Change to your default branch name
+      - main # Adjust to your default branch name
 
 jobs:
   deploy:
@@ -18,16 +18,16 @@ jobs:
       with:
         node-version: '18'
 
-    - name: Navigate to project folder
-      run: cd frontend # Replace with the folder containing your package.json
-
     - name: Install dependencies
+      working-directory: frontend # Specify the folder containing package.json
       run: npm install
 
     - name: Build project
-      run: npm run build # Adjust if your build command is different
+      working-directory: frontend # Specify the folder containing package.json
+      run: npm run build
 
     - name: Deploy to Firebase
+      working-directory: frontend # Specify the folder containing firebase.json (if needed)
       env:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
       run: firebase deploy --only hosting
