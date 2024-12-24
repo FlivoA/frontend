@@ -22,15 +22,15 @@ jobs:
       run: npm install -g firebase-tools
 
     - name: Install dependencies
-      working-directory: frontend # Adjust to the folder containing package.json
+      working-directory: frontend  # Adjust to the folder containing package.json
       run: npm install
 
     - name: Build project
-      working-directory: frontend # Adjust to the folder containing package.json
+      working-directory: frontend  # Adjust to the folder containing package.json
       run: npm run build
 
     - name: Deploy to Firebase
-      working-directory: frontend # Ensure this points to the correct folder containing firebase.json
+      working-directory: frontend/src  # Ensure this points to the correct folder containing firebase.json
       env:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}  # Use Firebase token from GitHub Secrets
       run: firebase deploy --only hosting --project flivoai-d1448
