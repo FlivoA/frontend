@@ -108,7 +108,7 @@ const SignIn = ({ onLoginSuccess }) => {
       };
 
       handleRedirectResponse(); // Handle redirect response after login
-    }, [instance, navigate]);
+    }, [instance]); // Only dependency is instance
 
     return (
       <div>
