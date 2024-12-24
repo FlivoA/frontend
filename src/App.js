@@ -6,7 +6,7 @@ import Chatbot from "./components/Chatbot";
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false); // Start with no authentication
-  const [userInfo, setUserInfo] = useState(null);
+  const [ setUserInfo] = useState(null);
 
   // Handle login success
   const handleLoginSuccess = (user) => {
