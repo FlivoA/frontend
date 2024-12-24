@@ -19,7 +19,7 @@ jobs:
         node-version: '18'
 
     - name: Install Firebase CLI
-      run: npm install -g firebase-tools # Installs Firebase CLI globally
+      run: npm install -g firebase-tools
 
     - name: Install dependencies
       working-directory: frontend # Adjust to the folder containing package.json
@@ -30,7 +30,7 @@ jobs:
       run: npm run build
 
     - name: Deploy to Firebase
-      working-directory: frontend # Adjust if firebase.json is in the frontend folder
+      working-directory: frontend/src # Adjust to the folder containing firebase.json
       env:
         FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
       run: firebase deploy --only hosting
