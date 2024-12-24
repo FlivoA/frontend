@@ -32,5 +32,5 @@ jobs:
     - name: Deploy to Firebase
       working-directory: frontend/src # Adjust to the folder containing firebase.json
       env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-      run: firebase deploy --only hosting
+        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}  # Use the Firebase token stored in GitHub Secrets
+      run: firebase deploy --only hosting --project flivoai-d1448
