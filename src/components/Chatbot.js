@@ -5,7 +5,7 @@ import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
 import imjjLogo from "../assets/imjj.png";
 
 function Chatbot({ onLogout }) {
-  const [mode, setMode] = useState("General mode");
+  const [ setMode] = useState("General mode");
   const [question, setQuestion] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
   const [loading, setLoading] = useState(false);
